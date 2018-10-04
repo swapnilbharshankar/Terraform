@@ -4,7 +4,9 @@ provider "aws" {
   region     = "${var.region}"
 }
 
-############## VPC creation ###############
+#################################################
+################## VPC creation #################
+#################################################
 
 resource "aws_vpc" "main" {
   cidr_block = "10.10.0.0/16"
@@ -12,9 +14,11 @@ resource "aws_vpc" "main" {
     Name = "Terraform VPC"
   }
 }
+
 ##################################################
 ############# Public Subnet Creation #############
 ##################################################
+
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = "${aws_vpc.main.id}"
   cidr_block              = "10.10.1.0/24"
